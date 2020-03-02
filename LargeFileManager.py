@@ -1,5 +1,37 @@
 #!/usr/bin/env python3
 
+    "def createPerfectSphericalSurfaceData(pWidth,pHeight,pA,pB,pC,pR):\n",
+    "    resArr = np.zeros((pWidth,pHeight),dtype=float)\n",
+    "    for tmpx in range(pWidth):\n",
+    "        for tmpy in range(pHeight):\n",
+    "            if math.pow(tmpx - pA,2) + math.pow(tmpy - pB,2) <= math.pow(pR,2):\n",
+    "                resArr[tmpy,tmpx] = math.sqrt(math.pow(pR,2) - math.pow(tmpx - pA,2) - math.pow(tmpy - pB,2)) + pC\n",
+    "    return resArr"
+        
+    "def createPerfectPlaneSurfaceData(pWidth,pHeight,pX1,pX2,pY1,pY2,pA,pB,pC):\n",
+    "    resArr = np.zeros((pWidth,pHeight),dtype=float)\n",
+    "    for tmpx in range(pX1,pX2):\n",
+    "        for tmpy in range(pY1,pY2):\n",
+    "            resArr[tmpy,tmpx] = (pA * tmpx + pB * tmpy) / pC * -1.0\n",
+    "    return resArr"
+        
+    "def createPositiveData():\n",
+    "    Distance = random.randrange(1000,3000)\n",
+    "    SampleCount = 3000\n",
+    "    OutPutWidth = 64\n",
+    "    OutPutHeight = 64\n",
+    "    R = random.randrange(10,30)\n",
+    "    C = random.randrange(R * -1,0)\n",
+    "    A = random.randrange(R,OutPutWidth - R)\n",
+    "    B = random.randrange(R,OutPutHeight - R)\n",
+    "    tmpResult = []\n",
+    "    for tmpi in range(SampleCount):\n",
+    "        tmpMat = createPerfectSphericalSurfaceData(OutPutWidth,OutPutHeight,A,B,C,R)\n",
+    "        tmpResult.append(tmpMat)\n",
+    "        pass\n",
+    "    return tmpResult"
+
+
 from PyQt5 import uic
 from urllib.parse import urlparse
 import mysql.connector
